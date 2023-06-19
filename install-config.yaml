@@ -1,0 +1,32 @@
+apiVersion: v1
+baseDomain: example.com
+compute:
+- hyperthreading: Enabled
+  name: worker
+  replicas: 0
+controlPlane:
+  hyperthreading: Enabled
+  name: master
+  replicas: 3
+metadata:
+  name: three-node-cluster
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 192.168.111.0/24
+  serviceNetwork:
+  - 172.30.0.0/16
+  networkType: OpenShiftSDN
+platform:
+  baremetal:
+    apiVIPs:
+    - 192.168.111.5
+    ingressVIPs:
+    - 192.168.111.6
+fips: false
+pullSecret: |
+  {"authwOE5KR...........om"}}}
+sshKey: |
+  ssh-rsa AAAAB3NzaC1y.........jlov-mac
